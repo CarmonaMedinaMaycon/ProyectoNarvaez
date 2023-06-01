@@ -25,24 +25,41 @@
   
     <h1>{{valueX}}</h1>
     <code>{{ person }}</code>
+    <code>{{ people }}</code>
   </div>
 </template>
 
 <script lang="ts" >
 import Vue from "vue";
 import {Person} from '../../entities/person'
+import { PeopleController } from "../people-controller";
+import { AllPersonDTO } from "../../entities/AllpeopleDTO";
 export default Vue.extend({
     name:'IndexPersonVue',
     data(){
         return {
+          people:{} as AllPersonDTO,
             valueX:'Este valor esta aquí' as string,
             person:{
               name:"" as string
-            }  as Person
+            }  as Person,
 
         }
-    }
-})
+    }, 
+    methods:{
+      async findAll(page:number){
+        const controller = new PeopleController();
+        const response = await controller.findAllPeople(page)
+        this.people = response.entity!;
+      }
+    },
+    mounted() {
+        this.findAll(2);
+    },
+
+
+
+});
 </script>
 
 <style>

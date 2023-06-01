@@ -7,5 +7,8 @@ export default {
     },
     doPost(endPoint:string, object:object, config?:AxiosRequestConfig){
         return AxiosClient.post(endPoint, object, config);
+    },
+    doPut(endPoint:string, id:number, config?:AxiosRequestConfig){
+        return AxiosClient.put(endPoint,id, config);
     }
 }

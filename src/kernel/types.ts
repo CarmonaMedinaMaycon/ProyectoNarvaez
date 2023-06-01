@@ -3,8 +3,8 @@ export type entity<Tidentifier extends number | string>={
 };
 export type CustomResponse<T> ={
     status:number,
-    result:boolean,
     message?:string,
     entities?: T[],
+    result?:boolean,
     entity?: T
 }

@@ -5,7 +5,7 @@ import api from '@/config/http-client.gateway';
 
 export class PeopleStorageGateway implements Repository{
     async getAllPeople(page: number): Promise<CustomResponse<AllPersonDTO>> {
-        const resp =await api.doGet(`api/users?pages=${page}`);
+        const resp =await api.doGet(`/api/users?page=${page}`);
         return {
             status:resp.status,
             entity: resp.data
